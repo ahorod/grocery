@@ -21,9 +21,37 @@ $(document).ready(function(){
       }
     })
   });
+
   $("#word-play").submit(function(event) {
+    event.preventDefault();
+    var sentence = $("#sentence").val();
+    var splitSentence = sentence.split([" "]);
 
-  })
+    var threeOrMore = []
+    splitSentence.forEach(function(item) {
+      if (item.length >= 3) {
+        threeOrMore.push(item);
+      }
+    });
+    var reversed = threeOrMore.reverse();
+    var concated = splitSentence.concat(threeOrMore);
+    var joined = concated.join(', ');
 
 
+    console.log(joined);
+  });
+  var deck = [];
+  suits = ["spades", "hearts", "clubs", "diamonds"]
+  values = ["ace", "2", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"]
+  suits.forEach(function(suit){
+    values.forEach(function(value){
+      deck.push(value + " of " + suit)
+    });
+  });
+  deck.forEach(function(card) {
+    if (card) {
+      $("ul").append("<li>" + card + "</li>");
+    }
+  });
+  console.log(deck);
 });
