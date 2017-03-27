@@ -28,30 +28,39 @@ $(document).ready(function(){
     var splitSentence = sentence.split([" "]);
 
     var threeOrMore = []
-    splitSentence.forEach(function(item) {
-      if (item.length >= 3) {
-        threeOrMore.push(item);
+
+    // using filter method
+    function greater3(value){
+      return value.length >= 3;
+    }
+    var threeOrMore = splitSentence.filter(greater3)
+
+    //using for each
+    splitSentence.forEach(function(word) {
+      if (word.length >=3) {
+        threeOrMore.push(word);
       }
-    });
+    })
+
     var reversed = threeOrMore.reverse();
     var concated = splitSentence.concat(threeOrMore);
     var joined = concated.join(', ');
 
 
-    console.log(joined);
+    console.log(threeOrMore);
   });
-  var deck = [];
-  suits = ["spades", "hearts", "clubs", "diamonds"]
-  values = ["ace", "2", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"]
-  suits.forEach(function(suit){
-    values.forEach(function(value){
-      deck.push(value + " of " + suit)
-    });
-  });
-  deck.forEach(function(card) {
-    if (card) {
-      $("ul").append("<li>" + card + "</li>");
-    }
-  });
-  console.log(deck);
+//   var deck = [];
+//   suits = ["spades", "hearts", "clubs", "diamonds"]
+//   values = ["ace", "2", "4", "5", "6", "7", "8", "9", "10", "jack", "queen", "king"]
+//   suits.forEach(function(suit){
+//     values.forEach(function(value){
+//       deck.push(value + " of " + suit)
+//     });
+//   });
+//   deck.forEach(function(card) {
+//     if (card) {
+//       $("ul").append("<li>" + card + "</li>");
+//     }
+//   });
+//   console.log(deck);
 });
